@@ -15,7 +15,7 @@ import { FamilyInfoComponent } from './family-info/family-info.component';
 import { EduInfoComponent } from './edu-info/edu-info.component';
 
 const routes: Routes = [
-   {path: '', redirectTo:'file-upload', pathMatch:'full'},
+   {path: '', redirectTo:'register', pathMatch:'full'},
   {path: 'login', component : LoginComponent},
   {path: 'dashboard', component : DashboardComponent},
   {path: 'register', component : RegisterComponent},

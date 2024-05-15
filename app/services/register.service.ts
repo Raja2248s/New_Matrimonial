@@ -14,4 +14,7 @@ export class RegisterService {
   public addPersonal(user:any){
     return this.http.post("http://localhost:8085/personal",user)
   }
+  public findregister(email : string){
+    return this.http.get(`httphttp://localhost:8085/reg/${email}`)
+  }
 }

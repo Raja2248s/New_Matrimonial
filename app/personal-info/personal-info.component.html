@@ -196,11 +196,11 @@
                     <input [(ngModel)]="user.bloodGroup" type="text" id="name" name="name" required>
         
                     <label for="address">Age:</label>
-                    <input [ngModel]="user.age" type="text" id="address" name="address" required>
+                    <input [(ngModel)]="user.age" type="text" id="address" name="address" required>
         
                    
                     <label for="photo">Upload Photo:</label>
-                    <input [ngModel]="user.photo" type="file" id="photo" name="photo" accept="image/*" required>
+                    <input [(ngModel)]="user.photo" type="file" id="photo" name="photo" accept="image/*" (change)="onFileSelected($event)" required>
 
                     <button type="submit" class="pure-button pure-button-primary" id="submitButton" (click)="register()">Submit</button>
 
