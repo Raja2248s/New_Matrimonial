@@ -31,12 +31,13 @@ export class PersonalInfoComponent implements OnInit {
   constructor(private http: HttpClient , private router:Router , private registerService : RegisterService){}
 ngOnInit(): void {
   const storedmail= localStorage.getItem('email');
+  
   if (storedmail !== null) {
   this.registerService.findregister(storedmail).subscribe(
     (data:any) => {
       this.user.registration=data;
 
-      console.log()
+      console.log(data);
     }
     // (error) => {
     //   console.log(error);
@@ -51,7 +52,12 @@ formSubmit() {
       this.registerService.addPersonal(this.user).subscribe(
         (data)=>{
               console.log(data);
-              alert('Registration sucessfull');
+              
+              this.bloodGroup='';
+              this.age=0;
+              alert('Personal Details sucessfully filled');
+              this.router.navigate(['family_info'])
+
         }
         ,
         (error)=>{
@@ -62,14 +68,15 @@ formSubmit() {
   }
 
   register(){
-     if(this.bloodGroup ==''){
+     if(this.user.bloodGroup ==''){
       alert('Please enter blood group');
       return ;
      }
-     if(this.age<=18){
+     if(this.user.age<=18){
       alert('You are not eligible');
       return;
      }
+     this.formSubmit();
   }
   onFileSelected(event: any) {
     if (event.target.files && event.target.files.length > 0) {

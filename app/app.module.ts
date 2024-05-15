@@ -53,6 +53,7 @@ import { VarifyEmailComponent } from './varify-email/varify-email.component';
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { FamilyInfoComponent } from './family-info/family-info.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { PersonalInfoComponent } from './personal-info/personal-info.component';
     ForgotPasswordComponent,
     VarifyEmailComponent,
     FileuploadComponent,
-    PersonalInfoComponent
+    PersonalInfoComponent,
+    FamilyInfoComponent
   ],
   imports: [
     BrowserModule,

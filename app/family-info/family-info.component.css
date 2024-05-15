@@ -468,7 +468,7 @@ img{
 
 .inn-ban {
     padding: 60px 30px 80px;
-    background: url(../images/banner.jpg) 0px -105px / cover no-repeat;
+    background: url('./images/banner.jpg') 0px -105px / cover no-repeat;
     position: relative;
     width: 100%;
     float: left;
@@ -489,7 +489,7 @@ img{
 .inn-ban::after {
     content: '';
     position: absolute;
-    background: url(../images/login-bg.png);
+    background: url(./images/login-bg.png);
     width: 100%;
     height: 53px;
     bottom: 0;
@@ -828,19 +828,19 @@ img{
 .cta-5:hover{background: #000;
     color: #fff;}
 .menu-box-1 {
-    background-image: url('../images/2.jpg');
+    background-image: url('./images/2.jpg');
 }
 
 .menu-box-2 {
-    background-image: url('../images/2_1.jpg');
+    background-image: url('./images/2_1.jpg');
 }
 
 .menu-box-3 {
-    background-image: url('../images/3_1.jpg');
+    background-image: url('./images/3_1.jpg');
 }
 
 .menu-box-4 {
-    background-image: url('../images/4_1.jpg');
+    background-image: url('./images/4_1.jpg');
 }
 
 .menu-box-1:before {
@@ -1753,7 +1753,7 @@ i.fa-instagram:hover {
     position: absolute;
     width: 100px;
     height: 106px;
-    background: url("../images/1_2.png") 0% 0% / 100% no-repeat;
+    background: url("./images/1_2.png") 0% 0% / 100% no-repeat;
     top: -5px;
     transition: all 0.4s ease-in-out 0s;
 }
@@ -2079,7 +2079,7 @@ table td{}
 .login .lhs .log-bg {
     width: 100%;
     height: 77px;
-    background: url("../images/login-bg.png") center bottom / 300px;
+    background: url("./images/login-bg.png") center bottom / 300px;
     position: absolute;
     left: 0px;
     bottom: 0px;
@@ -2103,7 +2103,7 @@ table td{}
 .im {
     width: 300px; 
     height: 300px; 
-    background-image: url("../images/login-couple.png"); 
+    background-image: url("./login-couple.png"); 
     background-size: cover; 
     background-position: center; 
     position: relative; 
@@ -2268,7 +2268,7 @@ table td{}
     left: 0;
     width: 188px;
     height: 188px;
-    background: url('../images/5_1.png') no-repeat;
+    background: url('./images/5_1.png') no-repeat;
     background-size: 300px;
     background-position: -78px -70px;
 }
@@ -2281,7 +2281,7 @@ table td{}
     right: 0;
     width: 123px;
     height: 300px;
-    background: url('../images/8.png') no-repeat;
+    background: url('./images/8.png') no-repeat;
     background-size: 121px;
     background-position: center right;
 }
