@@ -54,6 +54,9 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { FamilyInfoComponent } from './family-info/family-info.component';
+import { InfoComponent } from './info/info.component';
+import { EduInfoComponent } from './edu-info/edu-info.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { FamilyInfoComponent } from './family-info/family-info.component';
     VarifyEmailComponent,
     FileuploadComponent,
     PersonalInfoComponent,
-    FamilyInfoComponent
+    FamilyInfoComponent,
+    EduInfoComponent,
+    UserInfoComponent
+    
   ],
   imports: [
     BrowserModule,

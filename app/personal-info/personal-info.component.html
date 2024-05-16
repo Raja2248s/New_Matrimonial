@@ -200,7 +200,7 @@
         
                    
                     <label for="photo">Upload Photo:</label>
-                    <input [(ngModel)]="user.photo" type="file" id="photo" name="photo" accept="image/*" (change)="onFileSelected($event)" required>
+                    <input [(ngModel)]="user.photograph" type="file" id="photo" name="photo" accept="image/*" (change)="onFileSelected($event)" required>
 
                     <button type="submit" class="pure-button pure-button-primary" id="submitButton" (click)="register()">Submit</button>
 
@@ -252,7 +252,7 @@
     myInput.onblur = function () {
       document.getElementById("message").style.display = "none";
     }
-
+    
     // Validate password on keyup event
     myInput.onkeyup = function () {
       var lowerCaseLetters = /[a-z]/g;

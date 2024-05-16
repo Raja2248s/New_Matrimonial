@@ -3,46 +3,56 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/auth.service';
 import { RegisterService } from 'src/app/services/register.service';
 import { HttpClient } from '@angular/common/http';
+import { UserDataService } from '../user-data.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
+  userName: string='';
   email : string = '';
   password : string = '';
+  phoneno:number=0;
   emailVerified: boolean = false; 
 
-  constructor(private auth : AuthService,private registerService:RegisterService , private http: HttpClient , private router : Router) { }
+  constructor(private auth : AuthService,private registerService:RegisterService , private http: HttpClient , private router : Router , private userDataService : UserDataService) { }
   public user = {
     userName:'',
     email:'',
     password:'',
-    phoneno:'',
+    phoneno:0,
   };
   ngOnInit(): void {
   }
   formSubmit() {
     
-    this.registerService.addUser(this.user).subscribe(
-      (data)=>{
-        console.log(data);
-        localStorage.setItem('userData', JSON.stringify(data));
+    const userData = this.userDataService.getUserData();
+
+    userData.userName=this.user.userName;
+    userData.email=this.user.email;
+    userData.password=this.user.password;
+    userData.phoneno=this.user.phoneno;
+     console.log(userData);
+     this.router.navigate(['user_info']);
+    // this.registerService.addUser(this.user).subscribe(
+    //   (data)=>{
+    //     console.log(data);
+    //     localStorage.setItem('userData', JSON.stringify(data));
        
     
-    this.email = '';
-    this.password = '';
+    // this.email = '';
+    // this.password = '';
 
-    // this.emailVerified = true;
-        alert('Registration Successful');
-        this.router.navigate(['personal_info'])
-      },
-      (error)=>{
-        console.log(error);
-        // alert('Something went wrong');
-      }
-    );
+    // // this.emailVerified = true;
+    //     alert('Registration Successful');
+    //     this.router.navigate(['personal_info'])
+    //   },
+    //   (error)=>{
+    //     console.log(error);
+    //     // alert('Something went wrong');
+    //   }
+    // );
   }
   register() {
 
@@ -55,7 +65,7 @@ export class RegisterComponent implements OnInit {
       alert('Please enter password');
       return;
     }
-    if (this.user.phoneno == '') {
+    if (this.phoneno ==0) {
       alert('Please enter phone number');
       return;
     }

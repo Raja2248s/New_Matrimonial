@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { RegisterService } from '../services/register.service';
 import { Registration } from '../interfaces/auth';
 import { error } from 'console';
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-personal-info',
@@ -16,55 +17,55 @@ export class PersonalInfoComponent implements OnInit {
   bloodGroup: string='';
   photo: string = '';
   
+  constructor(private http: HttpClient , private router:Router , private registerService : RegisterService , private userDataService : UserDataService){}
+  
   public user ={
     bloodGroup:'',
     age:0,
-    photo:null,
-    registration:{
-      userName:'',
-      email:'',
-      password:'',
-      phoneno:'',
-    }
+    photograph:'',
+   
   }
    
-  constructor(private http: HttpClient , private router:Router , private registerService : RegisterService){}
 ngOnInit(): void {
-  const storedmail= localStorage.getItem('email');
+  // const storedmail= localStorage.getItem('email');
   
-  if (storedmail !== null) {
-  this.registerService.findregister(storedmail).subscribe(
-    (data:any) => {
-      this.user.registration=data;
+//   if (storedmail !== null) {
+//   this.registerService.findregister(storedmail).subscribe(
+//     (data:any) => {
+//       this.user.registration=data;
 
-      console.log(data);
-    }
-    // (error) => {
-    //   console.log(error);
-    //   alert('Error occurred while finding registration');
-    // }
-  );
-}
+//       console.log(data);
+//     }
+//     // (error) => {
+//     //   console.log(error);
+//     //   alert('Error occurred while finding registration');
+//     // }
+//   );
+// }
 
 
 }
 formSubmit() {
-      this.registerService.addPersonal(this.user).subscribe(
-        (data)=>{
-              console.log(data);
+  const userData = this.userDataService.getUserData();
+  userData.personal = this.user
+  console.log(userData);
+  this.router.navigate(['family_info'])
+      // this.registerService.addPersonal(userData).subscribe(
+      //   (data)=>{
+      //         console.log(data);
               
-              this.bloodGroup='';
-              this.age=0;
-              alert('Personal Details sucessfully filled');
-              this.router.navigate(['family_info'])
+      //         this.bloodGroup='';
+      //         this.age=0;
+      //         alert('Registration Sucessfull');
+      //         this.router.navigate(['family_info'])
 
-        }
-        ,
-        (error)=>{
-          console.log(error);
-          alert('Something went wrong');
-        }
-      )
+      //   }
+      //   ,
+      //   (error)=>{
+      //     console.log(error);
+      //     alert('Something went wrong');
+      //   }
+      // )
   }
 
   register(){

@@ -13,6 +13,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { FamilyInfoComponent } from './family-info/family-info.component';
 import { EduInfoComponent } from './edu-info/edu-info.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 const routes: Routes = [
    {path: '', redirectTo:'register', pathMatch:'full'},
@@ -28,8 +29,8 @@ const routes: Routes = [
   {path:'user_profile',component:UserProfileComponent},
   {path:'personal_info',component:PersonalInfoComponent},
   {path:'family_info',component:FamilyInfoComponent},
-  {path:'edu_info',component:EduInfoComponent}
-
+  {path:'edu_info',component:EduInfoComponent},
+  {path:'user_info' , component:UserInfoComponent}
 
 ];
 

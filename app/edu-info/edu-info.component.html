@@ -190,10 +190,10 @@
             <div class="rhs">
               <div>
                 <div class="container">
-                  <form class="pure-form" method="POST" id="registrationForm" >
+                  <form class="pure-form" method="POST" id="registrationForm" (ngSubmit)="formsubmit()" >
                     <h2>Education & Career Information</h2>
                 <label for="educationLevel">Education Level:</label>
-                <select id="educationLevel" name="educationLevel" required>
+                <select [(ngModel)]="user.educationLevel" id="educationLevel" name="educationLevel" required>
                     <option value="">Select</option>
                     <option value="High School">High School</option>
                     <option value="Associate's Degree">Associate's Degree</option>
@@ -203,12 +203,10 @@
                 </select>
     
                 <label for="fieldOfEducation">Field of Education:</label>
-                <input type="text" id="fieldOfEducation" name="fieldOfEducation" required>
+                <input [(ngModel)]="user.educationFiled" type="text" id="fieldOfEducation" name="fieldOfEducation" required>
     
-                <label for="occupation">Current Occupation:</label>
-                <input type="text" id="occupation" name="occupation" required>
-
-                    <button type="submit" class="pure-button pure-button-primary" id="submitButton">Submit</button>
+               
+                    <button type="submit" class="pure-button pure-button-primary" id="submitButton" (click)="register">Submit</button>
 
                   </form>
                 </div>
