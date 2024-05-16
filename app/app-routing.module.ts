@@ -31,7 +31,7 @@ const routes: Routes = [
   {path:'family_info',component:FamilyInfoComponent},
   {path:'edu_info',component:EduInfoComponent},
   {path:'user_info' , component:UserInfoComponent}
-
+  
 ];
 
 @NgModule({

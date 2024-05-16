@@ -1,5 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/auth.service';
+import { RegisterService } from '../services/register.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,15 +12,34 @@ export class LoginComponent implements OnInit {
   email : string = '';
   password : string = '';
 
-  constructor(private auth : AuthService,) { }
-  public loginuser = {
-    userName:'',
+  constructor(private auth : AuthService, private registerService : RegisterService , private router : Router) { }
+  public user = {
+   
     email:'',
     password:'',
-    phoneno:'',
   };
   ngOnInit(): void {
   }
+
+  formsubmit(){
+    this.registerService.log(this.user.email).subscribe(
+      ()=>{
+    
+            
+           
+            alert('login Sucessfull');
+            this.router.navigate(['dashboard'])
+
+      }
+      ,
+      (error)=>{
+        console.log(error);
+        alert('Something went wrong');
+      }
+    )
+
+  }
+
   login() {
 
     if(this.email == '') {
@@ -31,15 +52,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.auth.login(this.email,this.password);
+    
     
     this.email = '';
     this.password = '';
 
   }
 
-  signInWithGoogle() {
-    this.auth.googleSignIn();
-  }
+  
  
 }

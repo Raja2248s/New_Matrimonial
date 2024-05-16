@@ -31,7 +31,7 @@ export class EduInfoComponent implements OnInit {
               
              
               alert('Registration Sucessfull');
-              this.router.navigate(['family_info'])
+              this.router.navigate(['login'])
 
         }
         ,

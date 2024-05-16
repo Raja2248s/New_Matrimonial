@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
     userData.phoneno=this.user.phoneno;
      console.log(userData);
      this.router.navigate(['user_info']);
+
     // this.registerService.addUser(this.user).subscribe(
     //   (data)=>{
     //     console.log(data);
