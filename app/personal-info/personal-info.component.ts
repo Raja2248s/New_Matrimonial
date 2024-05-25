@@ -20,6 +20,7 @@ export class PersonalInfoComponent implements OnInit {
   constructor(private http: HttpClient , private router:Router , private registerService : RegisterService , private userDataService : UserDataService){}
   
   public user ={
+    rid:0,
     bloodGroup:'',
     age:0,
     photograph:'',
@@ -45,11 +46,35 @@ ngOnInit(): void {
 
 
 }
+
+
 formSubmit() {
   const userData = this.userDataService.getUserData();
+  const ridString = localStorage.getItem('rid');
+
+      if (ridString !== null) {
+        this.user.rid = parseInt(ridString, 10);
+      } 
+      else{
+        console.log("error in rid");
+      }
+   
+      this.registerService.addPersonalinfo(userData.personal).subscribe(
+
+        (data)=>{
+          console.log(data);
+          alert("Personal Info updated sucessfully");
+          this.router.navigate(['family_info'])
+          
+        },
+        (error)=>{
+          console.log(error);
+          alert("something went wrong in backend");
+        }
+      )
+
   userData.personal = this.user
   console.log(userData);
-  this.router.navigate(['family_info'])
       // this.registerService.addPersonal(userData).subscribe(
       //   (data)=>{
       //         console.log(data);

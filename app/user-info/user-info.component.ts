@@ -16,7 +16,7 @@ import { UserDataService } from '../user-data.service';
 export class UserInfoComponent implements OnInit{
  
   ngOnInit(): void {} 
-
+ 
     firstName: string='';
     lastName: string='';
     address: string='';
@@ -26,6 +26,7 @@ export class UserInfoComponent implements OnInit{
     mobileNum: string='';
       
     public user ={
+      rid:0,
       firstName: '',
       lastName: '',
       address: '',
@@ -39,9 +40,29 @@ export class UserInfoComponent implements OnInit{
 
     formsubmit(){
       const userData = this.userDataService.getUserData();
+      const ridString = localStorage.getItem('rid');
+
+      if (ridString !== null) {
+        this.user.rid = parseInt(ridString, 10);
+      } 
+      else{
+        console.log("error in rid");
+      }
+
       userData.user = this.user
+      this.registerService.addUserinfo(userData.user).subscribe(
+        (data)=>{
+          console.log(data);
+          alert("user info registraion sucessfull");
+          this.router.navigate(['personal_info'])
+          
+        },
+        (error)=>{
+          console.log(error);
+          alert("something wrong in backend");
+        }
+      )
       console.log(userData);
-      this.router.navigate(['personal_info'])
 
     }
-}
+  }

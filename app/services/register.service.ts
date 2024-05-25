@@ -10,19 +10,32 @@ export class RegisterService {
   constructor(private http:HttpClient) { 
     
   }
-  public addUser(user:any){
-    return this.http.post("http://localhost:8085/reg",user);
+  public addUser(user:any):Observable<any>{
+    return this.http.post("http://localhost:8086/reg",user);
   }
-  public addPersonal(user:any){
-    return this.http.post("http://localhost:8085/personal",user)
+  public addUserinfo(user:any):Observable<any>{
+    return this.http.post("http://localhost:8086/user",user);
   }
-  public findregister(email : string){
-    return this.http.get(`http://localhost:8085/reg/${email}`)
+  public addPersonalinfo(user:any):Observable<any>{
+    return this.http.post("http://localhost:8086/personal",user);
+  }
+  public addFamilyinfo(user:any):Observable<any>{
+    return this.http.post("http://localhost:8086/family",user);
+  }
+  public addEducationinfo(user:any):Observable<any>{
+    return this.http.post("http://localhost:8086/edu",user);
   }
 
-  public addfamily(user:any){
-    return this.http.post("http://localhost:8085/family",user)
-  }
+  // public addPersonal(user:any){
+  //   return this.http.post("http://localhost:8085/personal",user)
+  // }
+  // public findregister(email : string){
+  //   return this.http.get(`http://localhost:8085/reg/${email}`)
+  // }
+
+  // public addfamily(user:any){
+  //   return this.http.post("http://localhost:8085/family",user)
+  // }
    httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'

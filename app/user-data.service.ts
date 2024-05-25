@@ -10,6 +10,7 @@ export class UserDataService {
 
   userData : UserData ={
     user: {
+      rid:0,
       firstName: '',
       lastName: '',
       address: '',
@@ -19,23 +20,28 @@ export class UserDataService {
       mobileNum: ''
     },
     personal: {
+      rid:0,
       photograph: '',
       bloodGroup: '',
       age: 0
     },
     family: {
+      rid:0,
       familyStatus: '',
       familyType: '',
       fatherName: ''
     },
     education: {
+      rid:0,
       educationLevel: '',
       educationFiled: '',
     },
+    registration:{
     userName: '',
     password: '',
     phoneno: 0,
-    email: ''
+    email: '',
+    }
 
   } 
   constructor() { }

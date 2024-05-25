@@ -16,6 +16,7 @@ export class EduInfoComponent implements OnInit {
   constructor(private http: HttpClient , private router:Router , private registerService : RegisterService , private userDataService : UserDataService){}
   
   public user ={
+    rid:0,
     educationLevel: '',
     educationFiled: '',
    
@@ -23,17 +24,23 @@ export class EduInfoComponent implements OnInit {
    
   formsubmit(){
     const userData = this.userDataService.getUserData();
-  userData.education = this.user
-  console.log(userData);
-   this.registerService.addUser(userData).subscribe(
-        (data)=>{
-              console.log(data);
-              
-             
-              alert('Registration Sucessfull');
-              this.router.navigate(['login'])
+    const ridString = localStorage.getItem('rid');
 
-        }
+      if (ridString !== null) {
+        this.user.rid = parseInt(ridString, 10);
+      } 
+      else{
+        console.log("error in rid");
+      }
+
+  userData.education = this.user
+  console.log(userData.education);
+   this.registerService.addEducationinfo(userData.education).subscribe(
+        (data)=>{
+              console.log("data : " ,data);
+              alert('Education  Sucessfull');
+              this.router.navigate(['login'])
+}
         ,
         (error)=>{
           console.log(error);

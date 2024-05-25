@@ -17,6 +17,7 @@ export class FamilyInfoComponent implements OnInit {
   fatherName : string=''
 
   public user ={
+    rid:0,
     familyStatus:'',
     familyType:'',
     fatherName:'',
@@ -54,10 +55,28 @@ export class FamilyInfoComponent implements OnInit {
 
   formSubmit(){
       const userData = this.userDataService.getUserData();
-    
+      const ridString = localStorage.getItem('rid');
+
+      if (ridString !== null) {
+        this.user.rid = parseInt(ridString, 10);
+      } 
+      else{
+        console.log("error in rid");
+      }
+
       userData.family=this.user
+
+      this.registerService.addFamilyinfo(userData.family).subscribe(
+        (data)=>{
+          console.log(data);
+          alert("family info sucessfull");
+          this.router.navigate(['edu_info'])
+      },
+      (error)=>{
+        console.log(error);
+      }
+      )
       console.log(userData);
-      this.router.navigate(['edu_info'])
 
     //  this.registerService.addfamily(this.user).subscribe(
     //   (data)=>{
@@ -74,20 +93,20 @@ export class FamilyInfoComponent implements OnInit {
     //   }
     //  )
   }
-register(){
-  if(this.familyStatus==''){
-    alert('Personal Details sucessfully filled');
-    return ;
-  }
-  if(this.user.familyType==''){
-    alert('Personal Details sucessfully filled');
-    return;
-  }
-  if(this.user.fatherName==''){
-    alert('Personal Details sucessfully filled');
-    return;
-  }
-  this.formSubmit();
-}
+// register(){
+//   if(this.familyStatus==''){
+//     alert('Personal Details sucessfully filled');
+//     return ;
+//   }
+//   if(this.user.familyType==''){
+//     alert('Personal Details sucessfully filled');
+//     return;
+//   }
+//   if(this.user.fatherName==''){
+//     alert('Personal Details sucessfully filled');
+//     return;
+//   }
+//   this.formSubmit();
+// }
 
 }

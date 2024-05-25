@@ -1,5 +1,6 @@
 export interface UserData {
     user: {
+      rid :number;
       firstName: string;
       lastName: string;
       address: string;
@@ -9,22 +10,27 @@ export interface UserData {
       mobileNum: string;
     };
     personal: {
+      rid :number;
       photograph: string; // Assuming base64 encoded image
       bloodGroup: string;
       age: number;
     };
     family: {
+      rid :number;
       familyStatus: string;
       familyType: string;
       fatherName: string;
     };
     education: {
+      rid :number;
       educationLevel: string;
       educationFiled: string;
     };
+    registration :{
     userName: string;
     password: string;
     phoneno: number;
     email: string;
+    }
   }
   

@@ -28,13 +28,32 @@ export class RegisterComponent implements OnInit {
   formSubmit() {
     
     const userData = this.userDataService.getUserData();
-
-    userData.userName=this.user.userName;
-    userData.email=this.user.email;
-    userData.password=this.user.password;
-    userData.phoneno=this.user.phoneno;
+  
+    userData.registration=this.user;
+    console.log(userData.registration);
+    this.registerService.addUser(userData.registration).subscribe(
+      (data)=>{
+            console.log(data);
+            alert('Registration Sucessfull');
+            if (data && data.rid) {
+              localStorage.setItem('rid', data.rid);
+              localStorage.setItem('email', this.user.email);
+            }
+            this.router.navigate(['user_info']);
+}
+      ,
+      (error)=>{
+        console.log(error);
+        alert('Something went wrong');
+      }
+    )
      console.log(userData);
-     this.router.navigate(['user_info']);
+//      localStorage.setItem('userName', this.user.userName);
+// localStorage.setItem('email', this.user.email);
+// localStorage.setItem('password', this.user.password);
+// localStorage.setItem('phoneno', this.user.phoneno.toString());
+    //  window.location.href = 'http://localhost:8080/register';
+    //  this.router.navigate(['user_info']);
 
     // this.registerService.addUser(this.user).subscribe(
     //   (data)=>{
@@ -57,19 +76,19 @@ export class RegisterComponent implements OnInit {
   }
   register() {
 
-    if(this.email == '') {
-      alert('Please enter email');
-      return;
-    }
+    // if(this.email == '') {
+    //   alert('Please enter email');
+    //   return;
+    // }
 
-    if(this.password == '') {
-      alert('Please enter password');
-      return;
-    }
-    if (this.phoneno ==0) {
-      alert('Please enter phone number');
-      return;
-    }
+    // if(this.password == '') {
+    //   alert('Please enter password');
+    //   return;
+    // }
+    // if (this.phoneno ==0) {
+    //   alert('Please enter phone number');
+    //   return;
+    // }
   //   this.http.get<any>(`http://localhost:8080/check-email-verification/${this.email}`).subscribe(
   //   (response) => {
   //     // Response received, check if email is verified
