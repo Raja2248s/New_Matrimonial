@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 import { RegisterService } from 'src/app/services/register.service';
 import { HttpClient } from '@angular/common/http';
 import { UserDataService } from '../user-data.service';
+import emailjs , {type EmailJSResponseStatus } from '@emailjs/browser';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -25,7 +26,7 @@ export class RegisterComponent implements OnInit {
   };
   ngOnInit(): void {
   }
-  formSubmit() {
+  formSubmit(e:Event) {
     
     const userData = this.userDataService.getUserData();
   
@@ -39,6 +40,26 @@ export class RegisterComponent implements OnInit {
               localStorage.setItem('rid', data.rid);
               localStorage.setItem('email', this.user.email);
             }
+            // this.router.navigate(['user_info']);
+            // window.location.href = 'http://localhost:8080/register';
+            const emailParams = {
+              to_name: this.user.userName,
+              from_name:"Matrimonial Hub",
+              email_id: this.user.email,
+              message: 'Registration successful! Welcome to our platform.',
+            };
+            console.log(e.target as HTMLFormElement);
+            emailjs.send('service_ofumwpl' , 'template_5utam5h',emailParams , 'wMVIPTkz1aA4d9xZc')
+            .then(
+              () =>{
+                console.log('Success');
+           
+              },
+              (error)=>{
+                console.log(error);
+              }
+            )
+            // emailjs.send()
             this.router.navigate(['user_info']);
 }
       ,

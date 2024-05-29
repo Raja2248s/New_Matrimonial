@@ -14,12 +14,17 @@ import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { FamilyInfoComponent } from './family-info/family-info.component';
 import { EduInfoComponent } from './edu-info/edu-info.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { HomeComponent } from './home/home.component';
+import { authGuard } from './guards/auth.guard';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AdminComponent } from './admin/admin.component';
+import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
-   {path: '', redirectTo:'register', pathMatch:'full'},
+   {path: '', redirectTo:'home', pathMatch:'full'},
   {path: 'login', component : LoginComponent},
-  {path: 'dashboard', component : DashboardComponent},
-  {path: 'register', component : RegisterComponent},
+  {path: 'dashboard', component : DashboardComponent , canActivate:[authGuard]},
+  {path: 'register', component : RegisterComponent },
   {path: 'varify-email', component : VarifyEmailComponent},
   {path: 'forgot-password', component : ForgotPasswordComponent},
   {path : 'file-upload', component:FileuploadComponent},
@@ -30,7 +35,12 @@ const routes: Routes = [
   {path:'personal_info',component:PersonalInfoComponent},
   {path:'family_info',component:FamilyInfoComponent},
   {path:'edu_info',component:EduInfoComponent},
-  {path:'user_info' , component:UserInfoComponent}
+  {path:'user_info' , component:UserInfoComponent},
+  {path:'home' , component:HomeComponent},
+  {path:"reset" , component:ResetPasswordComponent},
+  {path:"admin" , component:AdminComponent},
+  {path:"details" , component:DetailsComponent}
+  
   
 ];
 
@@ -39,3 +49,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

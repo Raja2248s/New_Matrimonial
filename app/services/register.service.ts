@@ -6,7 +6,7 @@ import { UserData } from '../user-data';
   providedIn: 'root'
 })
 export class RegisterService {
-  private baseURL = 'http://localhost:8080'
+  private baseURL = 'http://localhost:8086'
   constructor(private http:HttpClient) { 
     
   }
@@ -16,8 +16,9 @@ export class RegisterService {
   public addUserinfo(user:any):Observable<any>{
     return this.http.post("http://localhost:8086/user",user);
   }
-  public addPersonalinfo(user:any):Observable<any>{
-    return this.http.post("http://localhost:8086/personal",user);
+  public addPersonalinfo(formData :FormData):Observable<any>{
+    console.log("Inside services of personal")
+    return this.http.post("http://localhost:8086/personal",formData);
   }
   public addFamilyinfo(user:any):Observable<any>{
     return this.http.post("http://localhost:8086/family",user);
@@ -26,16 +27,36 @@ export class RegisterService {
     return this.http.post("http://localhost:8086/edu",user);
   }
 
-  // public addPersonal(user:any){
-  //   return this.http.post("http://localhost:8085/personal",user)
-  // }
-  // public findregister(email : string){
-  //   return this.http.get(`http://localhost:8085/reg/${email}`)
-  // }
+  public getRegistration():Observable<any[]>{
+    return this.http.get<any[]>("http://localhost:8086/reg");
+  }
+   
+  public deleteRegistration(id: number): Observable<any> {
+    console.log(`${this.baseURL}/reg/${id}`);
+    return this.http.delete(`${this.baseURL}/reg/${id}`);
+  }
 
-  // public addfamily(user:any){
-  //   return this.http.post("http://localhost:8085/family",user)
-  // }
+  public getuserinfo(rid : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/user/rid/${rid}`)
+  }
+  public getpersonalinfo(rid : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/personal/rid/${rid}`)
+  }
+
+  public getfamilyinfo(rid : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/family/rid/${rid}`)
+  }
+  public geteduinfo(rid : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/edu/rid/${rid}`)
+  }
+
+
+  
+
    httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -43,7 +64,7 @@ export class RegisterService {
   };
   public log(email : string){
     // const headers = { 'Content-Type': 'application/json' };
-    console.log(`http://localhost:8085/reg/${email}`)
-    return this.http.get<UserData>(`http://localhost:8085/reg/${email}` , this.httpOptions)
+    console.log(`http://localhost:8086/reg/${email}`)
+    return this.http.get<UserData>(`http://localhost:8086/reg/${email}` , this.httpOptions)
   }
 }

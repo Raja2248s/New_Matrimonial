@@ -21,7 +21,7 @@ export class UserDataService {
     },
     personal: {
       rid:0,
-      photograph: '',
+      photograph: null,
       bloodGroup: '',
       age: 0
     },

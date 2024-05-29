@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
 
   formsubmit(){
     this.registerService.log(this.user.email).subscribe(
-      ()=>{
-    
-            
-           
+      (data)=>{   
             alert('login Sucessfull');
+            console.log(data);
+            
             this.router.navigate(['dashboard'])
+            
 
       }
       ,

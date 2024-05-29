@@ -11,7 +11,7 @@ export interface UserData {
     };
     personal: {
       rid :number;
-      photograph: string; // Assuming base64 encoded image
+      photograph: File|null; // Assuming base64 encoded image
       bloodGroup: string;
       age: number;
     };

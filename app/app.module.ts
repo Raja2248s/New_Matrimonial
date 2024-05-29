@@ -39,7 +39,7 @@
 // export class AppModule { }
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -57,6 +57,13 @@ import { FamilyInfoComponent } from './family-info/family-info.component';
 import { InfoComponent } from './info/info.component';
 import { EduInfoComponent } from './edu-info/edu-info.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { HomeComponent } from './home/home.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ButtonModule } from 'primeng/button'; 
+import { HeaderComponent } from './header/header.component';
+import { AdminComponent } from './admin/admin.component';
+import { DetailsComponent } from './details/details.component';
+import {MatTabsModule} from '@angular/material/tabs'
 
 @NgModule({
   declarations: [
@@ -70,7 +77,12 @@ import { UserInfoComponent } from './user-info/user-info.component';
     PersonalInfoComponent,
     FamilyInfoComponent,
     EduInfoComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    HomeComponent,
+    ResetPasswordComponent,
+   HeaderComponent,
+   AdminComponent,
+   DetailsComponent
     
   ],
   imports: [
@@ -79,6 +91,9 @@ import { UserInfoComponent } from './user-info/user-info.component';
     AngularFireModule.initializeApp(environment),
     FormsModule,
     HttpClientModule,
+    ButtonModule,
+    MatTabsModule,
+    BrowserAnimationsModule
   ],  
   providers: [],
   bootstrap: [AppComponent]
