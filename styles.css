@@ -388,3 +388,27 @@ strong{
 .details{
   margin-left: 0.5rem;
 }
+
+/* src/app/update-user-info/update-user-info.component.css */
+.user-info-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}

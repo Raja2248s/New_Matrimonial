@@ -14,6 +14,7 @@ export class DetailsComponent implements OnInit {
 
   public userInfo ={
     rid:0,
+    userId:0,
     firstName: '',
     lastName: '',
     address: '',
@@ -27,23 +28,26 @@ export class DetailsComponent implements OnInit {
     rid: 0,
     bloodGroup: '',
     age: 0,
+    personalId:0,
     photograph: null,
   }
 
   public familyInfo ={
     rid:0,
     familyStatus:'',
+    familyinfoId:0,
     familyType:'',
     fatherName:'',
   }
 
   public eduInfo ={
     rid:0,
+    educationId:0,
     educationLevel: '',
     educationFiled: '',
 
   }
-  constructor(private registerService : RegisterService ){}
+  constructor(private registerService : RegisterService , private router : Router ){}
 
   ngOnInit(): void {
     const ridString = sessionStorage.getItem('details');
@@ -62,7 +66,7 @@ export class DetailsComponent implements OnInit {
   
       this.registerService.getuserinfo(rid).subscribe(
         (data)=>{
-          
+          console.log(data);
           this.userInfo = { ...this.userInfo, ...data };
           
         },
@@ -86,6 +90,7 @@ export class DetailsComponent implements OnInit {
   fetchfamilyInfo(rid:number){
     this.registerService.getfamilyinfo(rid).subscribe(
       (data)=>{
+        console.log(data);
         this.familyInfo = { ...this.familyInfo, ...data };
       }
       ,(error)=>{
@@ -97,6 +102,7 @@ export class DetailsComponent implements OnInit {
   fetcheduInfo(rid:number){
     this.registerService.geteduinfo(rid).subscribe(
       (data)=>{
+        console.log(data);
         this.eduInfo = { ...this.eduInfo, ...data };
       }
       ,(error)=>{
@@ -105,7 +111,11 @@ export class DetailsComponent implements OnInit {
     )
   }
 
-  
+  navigatetoUpdate(section : string , id:number):void{
+      this.router.navigate([`update-${section}`] , {queryParams : {id:id}});
+      console.log("Navigating to that ");
+   console.log("Hello")
+  }
 
 }
 

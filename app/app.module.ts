@@ -64,6 +64,10 @@ import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
 import { DetailsComponent } from './details/details.component';
 import {MatTabsModule} from '@angular/material/tabs'
+import { UpdateUserInfoComponent } from 'src/update-user-info/update-user-info.component';
+import { UpdatePersonalInfoComponent } from 'src/update-personal-info/update-personal-info.component';
+import { UpdateFamilyInfoComponent } from 'src/update-family-info/update-family-info.component';
+import { UpdateEducationInfoComponent } from 'src/update-education-info/update-education-info.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +86,11 @@ import {MatTabsModule} from '@angular/material/tabs'
     ResetPasswordComponent,
    HeaderComponent,
    AdminComponent,
-   DetailsComponent
+   DetailsComponent,
+   UpdateUserInfoComponent,
+   UpdatePersonalInfoComponent,
+   UpdateFamilyInfoComponent,
+   UpdateEducationInfoComponent
     
   ],
   imports: [

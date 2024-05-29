@@ -19,6 +19,10 @@ import { authGuard } from './guards/auth.guard';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AdminComponent } from './admin/admin.component';
 import { DetailsComponent } from './details/details.component';
+import { UpdateUserInfoComponent } from 'src/update-user-info/update-user-info.component';
+import { UpdatePersonalInfoComponent } from 'src/update-personal-info/update-personal-info.component';
+import { UpdateFamilyInfoComponent } from 'src/update-family-info/update-family-info.component';
+import { UpdateEducationInfoComponent } from 'src/update-education-info/update-education-info.component';
 
 const routes: Routes = [
    {path: '', redirectTo:'home', pathMatch:'full'},
@@ -39,9 +43,12 @@ const routes: Routes = [
   {path:'home' , component:HomeComponent},
   {path:"reset" , component:ResetPasswordComponent},
   {path:"admin" , component:AdminComponent},
-  {path:"details" , component:DetailsComponent}
-  
-  
+  {path:"details" , component:DetailsComponent},  
+  {path:"update-user-info" , component:UpdateUserInfoComponent},
+  {path:"update-personal-info" , component:UpdatePersonalInfoComponent},
+  {path:"update-family-info" , component:UpdateFamilyInfoComponent},
+  {path:"update-education-info" , component:UpdateEducationInfoComponent}
+
 ];
 
 @NgModule({

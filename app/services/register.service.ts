@@ -54,7 +54,9 @@ export class RegisterService {
     return this.http.get<any>(`${this.baseURL}/edu/rid/${rid}`)
   }
 
-
+  public patchUserinfo(id: number, updates: any): Observable<any> {
+    return this.http.put(`${this.baseURL}/user/${id}`, updates);
+  }
   
 
    httpOptions = {
