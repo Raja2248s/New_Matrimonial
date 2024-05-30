@@ -32,7 +32,7 @@ export class UpdateUserInfoComponent implements OnInit  {
     
 
   loadUserInfo():void{
-    this.registerService.getuserinfo(this.userInfo.userId).subscribe(
+    this.registerService.getuserinfoByid(this.userInfo.userId).subscribe(
       (data)=>{
         console.log(data);
         this.userInfo=data;
@@ -47,6 +47,7 @@ export class UpdateUserInfoComponent implements OnInit  {
          this.registerService.patchUserinfo(this.userInfo.userId , this.userInfo).subscribe(
           response =>{
             console.log('user Info updated sucessfully' , response);
+            alert("user Info updated sucessfully")
           }
          )
   }

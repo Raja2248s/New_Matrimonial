@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
 
+ 
+  personalInfo: any = {};
+  photoUrl: string = '';
   public userInfo ={
     rid:0,
     userId:0,
@@ -24,13 +27,13 @@ export class DetailsComponent implements OnInit {
     mobileNum: ''
   }
    
-  public personalInfo ={
-    rid: 0,
-    bloodGroup: '',
-    age: 0,
-    personalId:0,
-    photograph: null,
-  }
+  // public personalInfo ={
+  //   rid: 0,
+  //   bloodGroup: '',
+  //   age: 0,
+  //   personalId:0,
+  //   photograph: '',
+  // }
 
   public familyInfo ={
     rid:0,
@@ -77,14 +80,31 @@ export class DetailsComponent implements OnInit {
   }
 
   fetchPersonalInfo(rid:number){
-    
-    this.registerService.getpersonalinfo(rid).subscribe(
+    const id = rid;
+    this.registerService.getpersonalinfo(id).subscribe(
       (data)=>{
-        console.log(data);
-        this.personalInfo = { ...this.personalInfo, ...data };
-       
+        console.log("personal " , data);
+        this.personalInfo = data;  
+        console.log(data.photograph);
+        this.photoUrl= this.createImageUrl(data.photograph); 
+        console.log("phourrl " , this.photoUrl);   
+      } 
+      ,(error) =>{
+        console.log(error);
       }
     )
+  }
+  createImageUrl(photograph : any):string{
+    console.log("photo : ", photograph);
+    if(photograph){
+      const base64Data = photograph;
+      console.log(`data:image/jpeg:base64,${base64Data}`)
+      return `data:image/jpeg;base64,${base64Data}`;
+    }
+    else{
+      console.log("No photograph");
+      return '';
+    }
   }
 
   fetchfamilyInfo(rid:number){
@@ -110,6 +130,8 @@ export class DetailsComponent implements OnInit {
       }
     )
   }
+
+ 
 
   navigatetoUpdate(section : string , id:number):void{
       this.router.navigate([`update-${section}`] , {queryParams : {id:id}});

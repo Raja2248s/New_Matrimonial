@@ -20,6 +20,10 @@ export class RegisterService {
     console.log("Inside services of personal")
     return this.http.post("http://localhost:8086/personal",formData);
   }
+  public updatePersonalinfo(formData :FormData , id : number):Observable<any>{
+    console.log("Inside services of personal")
+    return this.http.put(`http://localhost:8086/personal/${id}`,formData);
+  }
   public addFamilyinfo(user:any):Observable<any>{
     return this.http.post("http://localhost:8086/family",user);
   }
@@ -45,6 +49,23 @@ export class RegisterService {
     return this.http.get<any>(`${this.baseURL}/personal/rid/${rid}`)
   }
 
+  public getuserinfoByid(id : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/user/${id}`)
+  }
+  public getfamilyinfoByid(id : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/family/${id}`)
+  }
+  public getpersonalinfoByid(id : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/personal/${id}`)
+  }
+  public geteduinfoByid(id : number):Observable<any>{
+  
+    return this.http.get<any>(`${this.baseURL}/edu/${id}`)
+  }
+
   public getfamilyinfo(rid : number):Observable<any>{
   
     return this.http.get<any>(`${this.baseURL}/family/rid/${rid}`)
@@ -57,7 +78,15 @@ export class RegisterService {
   public patchUserinfo(id: number, updates: any): Observable<any> {
     return this.http.put(`${this.baseURL}/user/${id}`, updates);
   }
+
+  public patchFamilyinfo(id: number, updates: any): Observable<any> {
+    return this.http.put(`${this.baseURL}/family/${id}`, updates);
+  }
+  public patcheduinfo(id: number, updates: any): Observable<any> {
+    return this.http.put(`${this.baseURL}/edu/${id}`, updates);
+  }
   
+    
 
    httpOptions = {
     headers: new HttpHeaders({

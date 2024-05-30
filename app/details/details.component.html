@@ -18,6 +18,10 @@
       <div class="tab-content">
         <p><strong class="info-heading">Age </strong> <span class="details">{{ personalInfo.age }}</span></p>
         <p><strong class="info-heading">Blood Group </strong> <span class="details">{{ personalInfo.bloodGroup }}</span></p>
+        <div class="form-group">
+          <label>Photograph:</label>
+          <img *ngIf="photoUrl" [src]="photoUrl" alt="Photograph" class="img-thumbnail" />
+        </div>
         <button type="button" class="btn btn-info button" (click)="navigatetoUpdate('personal-info' , personalInfo.personalId)">Update Personal Info</button>
       </div>
     </mat-tab>
