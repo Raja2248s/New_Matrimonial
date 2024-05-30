@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="photodetails">
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <div *ngIf="!loading && !error" class="photo-gallery">
+    <div *ngFor="let photo of photos" class="photo-container1" (click)="logRid(photo.rid)">
+      <img [src]="'data:image/jpeg;base64,' + photo.photograph" alt="User Photo">
+    </div>
+  </div>
+</div>

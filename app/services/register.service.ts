@@ -34,6 +34,9 @@ export class RegisterService {
   public getRegistration():Observable<any[]>{
     return this.http.get<any[]>("http://localhost:8086/reg");
   }
+  public getPhotos():Observable<any[]>{
+    return this.http.get<any[]>("http://localhost:8086/personal");
+  }
    
   public deleteRegistration(id: number): Observable<any> {
     console.log(`${this.baseURL}/reg/${id}`);
@@ -85,8 +88,9 @@ export class RegisterService {
   public patcheduinfo(id: number, updates: any): Observable<any> {
     return this.http.put(`${this.baseURL}/edu/${id}`, updates);
   }
+   
+
   
-    
 
    httpOptions = {
     headers: new HttpHeaders({

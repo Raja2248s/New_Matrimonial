@@ -68,6 +68,7 @@ import { UpdateUserInfoComponent } from 'src/update-user-info/update-user-info.c
 import { UpdatePersonalInfoComponent } from 'src/update-personal-info/update-personal-info.component';
 import { UpdateFamilyInfoComponent } from 'src/update-family-info/update-family-info.component';
 import { UpdateEducationInfoComponent } from 'src/update-education-info/update-education-info.component';
+import { PhotoGalleryComponent } from 'src/photo-gallery/photo-gallery.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { UpdateEducationInfoComponent } from 'src/update-education-info/update-e
    UpdateUserInfoComponent,
    UpdatePersonalInfoComponent,
    UpdateFamilyInfoComponent,
-   UpdateEducationInfoComponent
+   UpdateEducationInfoComponent,
+   PhotoGalleryComponent
     
   ],
   imports: [

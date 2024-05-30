@@ -23,6 +23,7 @@ import { UpdateUserInfoComponent } from 'src/update-user-info/update-user-info.c
 import { UpdatePersonalInfoComponent } from 'src/update-personal-info/update-personal-info.component';
 import { UpdateFamilyInfoComponent } from 'src/update-family-info/update-family-info.component';
 import { UpdateEducationInfoComponent } from 'src/update-education-info/update-education-info.component';
+import { PhotoGalleryComponent } from 'src/photo-gallery/photo-gallery.component';
 
 const routes: Routes = [
    {path: '', redirectTo:'home', pathMatch:'full'},
@@ -47,8 +48,8 @@ const routes: Routes = [
   {path:"update-user-info" , component:UpdateUserInfoComponent},
   {path:"update-personal-info" , component:UpdatePersonalInfoComponent},
   {path:"update-family-info" , component:UpdateFamilyInfoComponent},
-  {path:"update-education-info" , component:UpdateEducationInfoComponent}
-
+  {path:"update-education-info" , component:UpdateEducationInfoComponent},
+  {path:'photo-gallery' , component:PhotoGalleryComponent}
 ];
 
 @NgModule({
