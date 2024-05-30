@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
             alert('Registration Sucessfull');
             if (data && data.rid) {
               localStorage.setItem('rid', data.rid);
-              localStorage.setItem('email', this.user.email);
+             
             }
             // this.router.navigate(['user_info']);
             // window.location.href = 'http://localhost:8080/register';

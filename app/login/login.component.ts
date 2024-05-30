@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       (data)=>{   
             alert('login Sucessfull');
             console.log(data);
-            
+            localStorage.setItem('email', this.user.email);
             this.router.navigate(['dashboard'])
             
 

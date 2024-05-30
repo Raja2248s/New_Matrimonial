@@ -10,7 +10,7 @@ export class HeaderComponent {
  constructor(private router : Router ){}
 
 logOut(){
-sessionStorage.clear();
+localStorage.removeItem('rid');
 this.router.navigate(['login'])
 }
 }

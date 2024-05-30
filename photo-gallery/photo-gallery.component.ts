@@ -17,8 +17,6 @@ export class PhotoGalleryComponent implements OnInit {
   photos: {rid:number,  age: number, bloodgroup: string, photograph: string }[] = [];
 
 
- 
-
   constructor(private registerService : RegisterService , private router : Router) { }
 
   ngOnInit(): void {
@@ -37,7 +35,9 @@ export class PhotoGalleryComponent implements OnInit {
   }
     
   logRid(rid: number) {
-   sessionStorage.setItem('photo' ,rid.toString() );
+    console.log("clicked");
+   sessionStorage.setItem('details' ,rid.toString() );
+   this.router.navigate(['details'])
   }
   
 }
